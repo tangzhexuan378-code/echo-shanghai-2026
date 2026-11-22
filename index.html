@@ -126,6 +126,14 @@ body {
 </script>
 <link rel="stylesheet" href="touch-v8.css">
 <script src="touch-v8.js"></script>
+<style>
+#status:has(.touch-loading)::before {display:none}
+#status:has(.touch-loading) {background:linear-gradient(150deg,#102331,#07121c 75%)}
+.touch-loading {position:absolute;top:41%;width:92%;text-align:center;color:#f6ecdc;font:15px system-ui,sans-serif;letter-spacing:.06em}
+.touch-loading strong,.touch-loading span {display:block}.touch-loading strong {font-size:30px;margin-bottom:15px}
+#status:has(#status-notice[style*="block"]) .touch-loading {display:none}
+</style>
+<script src="touch-load-v8.js"></script>
 <script src="index.js"></script>
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"echo-v8.pck":5254636,"index.wasm":38034280},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
