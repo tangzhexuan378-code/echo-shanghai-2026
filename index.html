@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 		<title>回到同一处 · 上海 2026</title>
 		<style>
 html, body, #canvas {
@@ -115,18 +115,20 @@ body {
   window.fetch = async (input, options) => {
     const url = new URL(input instanceof Request ? input.url : input, document.baseURI);
     if (url.origin !== location.origin || !url.pathname.endsWith('/index.wasm')) return original(input, options);
+    if (!('DecompressionStream' in window)) return original(new URL('./engine-v8.wasm',url), options);
     const packed = await original(new URL('./engine.bin', url), options);
     if (!packed.ok || !packed.body) throw new Error('游戏引擎文件暂时无法下载。');
-    if (!('DecompressionStream' in window)) throw new Error('请用新版 Chrome 或 Edge 打开。');
     return new Response(packed.body.pipeThrough(new DecompressionStream('gzip')), {
       headers: {'Content-Type': 'application/wasm', 'Content-Length': '38034280'}
     });
   };
 })();
 </script>
+<link rel="stylesheet" href="touch-v8.css">
+<script src="touch-v8.js"></script>
 <script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"echo-v7.pck":5247308,"index.wasm":38034280},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"echo-v8.pck":5254636,"index.wasm":38034280},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -215,7 +217,7 @@ const engine = new Engine(GODOT_CONFIG);
 	} else {
 		setStatusMode('progress');
 		engine.startGame({
-			mainPack: "echo-v7.pck",
+			mainPack: "echo-v8.pck",
 			'onProgress': function (current, total) {
 				if (current > 0 && total > 0) {
 					statusProgress.value = current;

@@ -1,0 +1,71 @@
+#echo-touch, #echo-touch * { box-sizing:border-box; }
+.echo-phone body { overflow:hidden; overscroll-behavior:none; }
+.echo-phone #canvas { touch-action:none; }
+#echo-touch { position:fixed; inset:0; z-index:5; width:100%; height:100%; height:100dvh; overflow:hidden; color:#f7f1e6; font:16px/1.45 system-ui,"PingFang SC","Microsoft YaHei",sans-serif; -webkit-tap-highlight-color:transparent; }
+#echo-touch [hidden] { display:none!important; }
+#echo-touch button,#echo-touch select,#echo-touch summary { font:inherit; }
+#echo-touch button,#echo-touch select { color:#f8f3e9; background:#173340f5; border:1px solid #668492; border-radius:11px; min-height:44px; padding:9px 13px; touch-action:manipulation; }
+#echo-touch button { cursor:pointer; }
+#echo-touch button:active { background:#42606b; transform:translateY(1px); }
+#echo-touch button.gold { color:#1c2830; background:#ffcb89; border-color:#ffdda8; font-weight:700; }
+#echo-touch small.kicker { color:#ffd09a; font-size:13px; letter-spacing:.12em; }
+.touch-sheet { height:100%; overflow:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; background:linear-gradient(118deg,#071822eb 8%,#102632c9 66%,#11212bdb),url('touch-city-v8.webp') 50% 50%/cover; padding:max(24px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left)); }
+.touch-content { display:flex; flex-direction:column; align-items:stretch; gap:14px; margin:0 auto; max-width:640px; }
+.touch-content h1 { margin:0; line-height:1.12; font-size:clamp(29px,8vw,54px); }
+.touch-content h2 { color:#ffce90; font-size:17px; margin:8px 0 -9px; }
+.touch-content p { margin:0; }
+.touch-content .intro { font-size:17px; color:#ccdce2; max-width:29em; }
+.gesture-hint { color:#c3d8de; font-size:14px; }
+.touch-content .record-text { line-height:1.7; }
+.menu-actions,.identity-input { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.menu-actions button { min-height:48px!important; }
+.touch-content .identity { padding-top:2px; border-top:1px solid #60747b; }
+.identity summary { padding:14px 0; cursor:pointer; color:#d9e5e7; }
+.identity-input label { display:grid; gap:5px; font-size:14px; color:#e1c599; }
+.identity-input select { width:100%; }
+#echo-touch .text-button { align-self:flex-start; background:transparent; border-color:transparent; text-decoration:underline; text-underline-offset:4px; padding-left:0; }
+.story-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+.story-list button { text-align:left; }
+.touch-playing { --pad:12px; padding:0; touch-action:none; user-select:none; -webkit-user-select:none; }
+.look-area { position:absolute; inset:0; touch-action:none; }
+.game-bar,.game-info,.bearing,.touch-prompt,.keypad,.decisions,.touch-bottom { position:absolute; }
+.game-bar { top:max(8px,env(safe-area-inset-top)); left:max(var(--pad),env(safe-area-inset-left)); right:max(var(--pad),env(safe-area-inset-right)); display:flex; gap:6px; align-items:flex-start; }
+.game-bar .location { margin-right:auto; min-width:0; display:grid; padding:6px 11px; background:#0d2534db; border-radius:10px; }
+.location strong { color:#ffd391; font-size:15px; }
+.location span { font-size:12px; color:#d9e7e9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.game-info { top:calc(max(8px,env(safe-area-inset-top)) + 58px); left:max(var(--pad),env(safe-area-inset-left)); max-width:min(340px,calc(100% - 24px)); max-height:34%; overflow:auto; touch-action:pan-y; border-radius:12px; padding:8px 11px; background:#0b202ddc; color:#e4e9e7; }
+.task-summary { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.task-summary strong { color:#ffcf93; }
+#echo-touch .task-summary button { font-size:13px; min-height:36px; padding:4px 8px; }
+.rule,.details { font-size:14px; line-height:1.4; }
+.details { margin:5px 0; color:#e9d5ba; }
+.trial-status { margin-top:4px; white-space:pre-line; color:white; font-weight:650; font-variant-numeric:tabular-nums; }
+.beat { width:100%; height:8px; accent-color:#ffd393; }
+.bearing { right:max(12px,env(safe-area-inset-right)); bottom:calc(max(12px,env(safe-area-inset-bottom)) + 174px); border-radius:12px; padding:3px 8px; font-size:13px; background:#10242dc4; pointer-events:none; }
+.touch-bottom { left:max(14px,env(safe-area-inset-left)); right:max(14px,env(safe-area-inset-right)); bottom:max(15px,env(safe-area-inset-bottom)); display:flex; justify-content:space-between; align-items:flex-end; pointer-events:none; }
+.stick { --knob:translate(0px,0px); width:108px; height:108px; border:2px solid #ecf1ef88; background:#10233370; border-radius:50%; display:grid; place-items:center; touch-action:none; pointer-events:auto; }
+.stick-knob { display:block; width:43px; height:43px; border-radius:50%; background:#d9e9e8aa; border:2px solid #fff9; transform:var(--knob); pointer-events:none; }
+.hand { display:grid; grid-template-columns:repeat(2,auto); align-items:end; gap:6px; max-width:55%; pointer-events:auto; }
+.hand button { font-size:14px!important; padding:7px 10px!important; }
+.hand .interact { grid-column:1/-1; touch-action:none!important; min-height:49px!important; }
+.keypad { right:max(14px,env(safe-area-inset-right)); bottom:calc(max(15px,env(safe-area-inset-bottom)) + 108px); display:flex; justify-content:flex-end; gap:4px; }
+#echo-touch .keypad button { min-width:43px; min-height:44px; padding:6px; font-size:18px; }
+.decisions { left:max(14px,env(safe-area-inset-left)); right:max(14px,env(safe-area-inset-right)); bottom:calc(max(15px,env(safe-area-inset-bottom)) + 120px); display:flex; gap:7px; }
+.decisions button { flex:1; font-size:15px!important; }
+.touch-prompt { bottom:calc(max(15px,env(safe-area-inset-bottom)) + 199px); left:50%; transform:translateX(-50%); max-width:94%; width:max-content; padding:4px 9px; font-size:13px; border-radius:9px; background:#0a202cce; text-align:center; pointer-events:none; }
+@media(orientation:landscape) and (max-height:550px) {
+ .touch-sheet { padding-top:max(12px,env(safe-area-inset-top)); }
+ .touch-content { gap:9px; }
+ .touch-content h1 { font-size:32px; }
+ .game-info { max-width:38%; max-height:36%; }
+ .touch-playing .bearing { bottom:auto; top:64px; }
+ .touch-prompt { bottom:5px; max-width:35%; }
+ .keypad,.decisions { justify-content:center; bottom:34px; left:24%; right:24%; }
+ .game-bar .location { padding-top:3px; padding-bottom:3px; }
+ .stick { width:94px; height:94px; }
+}
+@media(max-width:335px){ #echo-touch .keypad button { min-width:40px; } }
+@media(pointer:coarse) {
+ #status:not(:has(#status-notice[style*="block"])):before { content:"正在载入《回到同一处》"; position:absolute; top:59%; width:100%; text-align:center; color:#f7d7aa; font:16px system-ui,sans-serif; }
+}
+
